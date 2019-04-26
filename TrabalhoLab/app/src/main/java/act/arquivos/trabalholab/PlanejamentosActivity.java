@@ -5,10 +5,15 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import act.arquivos.trabalholab.Adapter.CursoAdapter;
 import act.arquivos.trabalholab.Dados.Aluno;
 
 public class PlanejamentosActivity extends AppCompatActivity {
@@ -25,6 +30,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         aluno = new Aluno();
         novoPlanejamento = (Button) findViewById(R.id.botaoNovoPlanejamento);
         nome = (TextView) findViewById(R.id.txtAluno);
@@ -32,6 +38,10 @@ public class PlanejamentosActivity extends AppCompatActivity {
         semestre = (TextView) findViewById(R.id.txtSemestre);
 
 
+        RecyclerView rv = findViewById(R.id.rvCursos);
+        CursoAdapter cursoAdapter = new CursoAdapter(aluno);
+        rv.setAdapter(cursoAdapter);
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
         novoPlanejamento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +49,25 @@ public class PlanejamentosActivity extends AppCompatActivity {
                 Intent intent = new Intent(PlanejamentosActivity.this,NovoPlanejamentoActivity.class);
                 startActivityForResult(intent,1);
             }
+        });
+
+        cursoAdapter.setOnCursoClickListener(new CursoAdapter.OnCursoClickListener() {
+            @Override
+            public void onCursoClick(View v, int position) {
+                if(position==0){
+                    Toast.makeText(PlanejamentosActivity.this, "Teste Linguas", Toast.LENGTH_SHORT).show();
+
+                } else if (position==1){
+                    Toast.makeText(PlanejamentosActivity.this, "Teste Exatas", Toast.LENGTH_SHORT).show();
+
+                } else if (position==2){
+                    Toast.makeText(PlanejamentosActivity.this, "Teste Saúde", Toast.LENGTH_SHORT).show();
+
+                } else if( position==3){
+                    Toast.makeText(PlanejamentosActivity.this, "Teste Humanidades", Toast.LENGTH_SHORT).show();
+
+                }
+          }
         });
     }
 

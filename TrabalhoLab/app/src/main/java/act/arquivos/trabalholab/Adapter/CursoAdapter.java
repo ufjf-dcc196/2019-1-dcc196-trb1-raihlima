@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import act.arquivos.trabalholab.Dados.Curso;
@@ -16,7 +17,7 @@ import act.arquivos.trabalholab.R;
 
 public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> {
 
-    private List <Curso> listaCursos;
+    private List <Curso> listaCursos = new ArrayList<>();
     private OnCursoClickListener listener;
 
     public CursoAdapter(Aluno aluno) {
