@@ -11,13 +11,20 @@ public class Aluno {
     private Curso humanidades;
 
     public Aluno(){
-
+        this.exatas = new Curso("Exatas",0);
+        this.linguas = new Curso("Línguas",0);
+        this.saude = new Curso("Saúde",0);
+        this.humanidades = new Curso("Humanidades",0);
     }
 
     public Aluno(String nome, String ano, String semestre) {
         this.nome = nome;
         this.ano = ano;
         this.semestre = semestre;
+        this.exatas = new Curso("Exatas",0);
+        this.linguas = new Curso("Línguas",0);
+        this.saude = new Curso("Saúde",0);
+        this.humanidades = new Curso("Humanidades",0);
     }
 
     public Aluno(String nome, String ano, String semestre, Curso linguas, Curso exatas, Curso saude, Curso humanidades) {

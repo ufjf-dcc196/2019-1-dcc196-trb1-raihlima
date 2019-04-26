@@ -3,7 +3,7 @@ package act.arquivos.trabalholab.Dados;
 import java.util.ArrayList;
 import java.util.List;
 
-class Curso {
+public class Curso {
     private String nome;
     private int horas;
     List <Disciplina> disciplinas = new ArrayList<>();
