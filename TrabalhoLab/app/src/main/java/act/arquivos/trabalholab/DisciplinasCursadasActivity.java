@@ -31,6 +31,8 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disciplinas_cursadas);
 
+        setTitle("Disciplinas Cursadas");
+
         nome = (TextView) findViewById(R.id.txtNomeCusro);
         ano = (TextView) findViewById(R.id.txtAnoCurso);
         semestre = (TextView) findViewById(R.id.txtSemestreCurso);

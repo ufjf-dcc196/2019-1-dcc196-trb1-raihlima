@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:inputType="textCapSentences"
+                android:inputType="textCapWords"
                 app:layout_constraintEnd_toStartOf="@+id/tableLayout"
                 tools:layout_editor_absoluteY="16dp" />
 
@@ -70,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="100"
                 android:ems="10"
-                android:inputType="number"
+                android:inputType="numberSigned|number"
                 tools:layout_editor_absoluteX="142dp"
                 tools:layout_editor_absoluteY="167dp" />
 
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|number" />
         </TableRow>
 
     </TableLayout>
@@ -123,14 +123,6 @@
                 android:hint="Horas"
                 android:inputType="numberSigned|numberDecimal" />
 
-            <EditText
-                android:id="@+id/edtTxtLinguasHorasPorcentagem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:ems="10"
-                android:hint="Porcentagem"
-                android:inputType="numberSigned" />
         </TableRow>
 
         <TableRow
@@ -153,14 +145,6 @@
                 android:hint="Horas"
                 android:inputType="numberSigned|numberDecimal" />
 
-            <EditText
-                android:id="@+id/edtTxtExatasHorasPorcentagem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:ems="10"
-                android:hint="Porcentagem"
-                android:inputType="numberSigned" />
         </TableRow>
 
         <TableRow
@@ -183,14 +167,6 @@
                 android:hint="Horas"
                 android:inputType="numberSigned|numberDecimal" />
 
-            <EditText
-                android:id="@+id/edtTxtSaudeHorasPorcentagem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:ems="10"
-                android:hint="Porcentagem"
-                android:inputType="numberSigned" />
         </TableRow>
 
         <TableRow
@@ -213,14 +189,6 @@
                 android:hint="Horas"
                 android:inputType="numberSigned|numberDecimal" />
 
-            <EditText
-                android:id="@+id/edtTxtHumanidadesHorasPorcentagem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:ems="10"
-                android:hint="Porcentagem"
-                android:inputType="numberSigned" />
         </TableRow>
     </TableLayout>
 

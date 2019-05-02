@@ -29,6 +29,13 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         this.listaCursos.add(aluno.getHumanidades());
     }
 
+    public void alteraDados(Aluno aluno){
+        this.listaCursos.set(0,aluno.getLinguas());
+        this.listaCursos.set(1,aluno.getExatas());
+        this.listaCursos.set(2,aluno.getSaude());
+        this.listaCursos.set(3,aluno.getHumanidades());
+    }
+
     public void setOnCursoClickListener(OnCursoClickListener listener){
         this.listener = listener;
     }
@@ -48,8 +55,8 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull CursoAdapter.ViewHolder viewHolder, int i) {
         String nome = this.listaCursos.get(i).getNome();
         String porcentagem  = Integer.toString(this.listaCursos.get(i).getHorasPorcentagem())+"%";
-        String computadas = Integer.toString(this.listaCursos.get(i).getHoras()) + "H" ;
-        String parciais  = Integer.toString(this.listaCursos.get(i).getHoras())+ "%";
+        String computadas = Integer.toString(this.listaCursos.get(i).getHorasComputadas()) + "H" ;
+        String parciais  = Integer.toString(this.listaCursos.get(i).getGetHorasComputadasPorcentagem())+ "%";
 
         viewHolder.txtNome.setText(nome);
         viewHolder.txtPorcentagem.setText(porcentagem);

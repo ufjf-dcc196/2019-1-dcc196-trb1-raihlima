@@ -18,6 +18,7 @@ import act.arquivos.trabalholab.Dados.Aluno;
 
 public class PlanejamentosActivity extends AppCompatActivity {
 
+    public static final int NOVOPLANEJAMENTO = 1;
     private Button novoPlanejamento;
     private Aluno aluno;
 
@@ -31,6 +32,8 @@ public class PlanejamentosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("Planejamento");
 
 
         aluno = new Aluno();
@@ -50,7 +53,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PlanejamentosActivity.this,NovoPlanejamentoActivity.class);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent,NOVOPLANEJAMENTO);
             }
         });
 
@@ -111,7 +114,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK){
-            if(requestCode==1){
+            if(requestCode== NOVOPLANEJAMENTO){
                 Bundle bundle = data.getBundleExtra("info");
                 criarNovoAluno(bundle);
                 alterarInfo();
@@ -142,10 +145,10 @@ public class PlanejamentosActivity extends AppCompatActivity {
 
     private void atualizarLista(){
         RecyclerView rv = findViewById(R.id.rvCursos);
-        cursoAdapter = new CursoAdapter(aluno);
+        cursoAdapter.alteraDados(aluno);
         cursoAdapter.notifyDataSetChanged();
-        rv.setAdapter(cursoAdapter);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
 }

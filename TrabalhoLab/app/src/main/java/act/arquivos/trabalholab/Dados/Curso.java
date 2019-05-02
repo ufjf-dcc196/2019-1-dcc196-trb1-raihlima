@@ -7,7 +7,9 @@ public class Curso {
     private String nome;
     private int horas;
     private int horasPorcentagem;
-    List <Disciplina> disciplinas = new ArrayList<>();
+    private int horasComputadas;
+    private int getHorasComputadasPorcentagem;
+    private List <Disciplina> disciplinas = new ArrayList<>();
 
     public Curso() {
     }
@@ -16,6 +18,8 @@ public class Curso {
         this.nome = nome;
         this.horas = horas;
         this.horasPorcentagem = horasPorcentagem;
+        this.horasComputadas =0;
+        this.horasPorcentagem = 0;
 
     }
 
@@ -53,5 +57,21 @@ public class Curso {
 
     public void setHorasPorcentagem(int horasPorcentagem) {
         this.horasPorcentagem = horasPorcentagem;
+    }
+
+    public int getHorasComputadas() {
+        return horasComputadas;
+    }
+
+    public void setHorasComputadas(int horasComputadas) {
+        this.horasComputadas = horasComputadas;
+    }
+
+    public int getGetHorasComputadasPorcentagem() {
+        return getHorasComputadasPorcentagem;
+    }
+
+    public void setGetHorasComputadasPorcentagem(int getHorasComputadasPorcentagem) {
+        this.getHorasComputadasPorcentagem = getHorasComputadasPorcentagem;
     }
 }

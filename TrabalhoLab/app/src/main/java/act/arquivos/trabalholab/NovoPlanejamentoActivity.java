@@ -17,13 +17,9 @@ public class NovoPlanejamentoActivity extends AppCompatActivity {
     private EditText ano;
     private EditText semestre;
     private EditText exatasHoras;
-    private EditText exatasPorcentagem;
     private EditText humanidadesHoras;
-    private EditText humanidadesPorcentagem;
     private EditText saudeHoras;
-    private EditText saudePorcentagem;
     private EditText linguasHoras;
-    private EditText linguasPorcentagem;
 
 
     @Override
@@ -31,36 +27,43 @@ public class NovoPlanejamentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_planejamento);
 
+        setTitle("Novo Planejamento");
+
         confirmar = (Button) findViewById(R.id.botaoConfirmarNovoPlanejamento);
         nomeAluno = (EditText) findViewById(R.id.edtTxtNomeAluno);
         ano = (EditText) findViewById(R.id.edtTxtAno);
         semestre = (EditText) findViewById(R.id.edtTxtSemestre);
         exatasHoras = (EditText) findViewById(R.id.edtTxtExatasHoras);
-        exatasPorcentagem = (EditText) findViewById(R.id.edtTxtExatasHorasPorcentagem);
         humanidadesHoras = (EditText) findViewById(R.id.edtTxtHumanidadesHoras);
-        humanidadesPorcentagem = (EditText) findViewById(R.id.edtTxtHumanidadesHorasPorcentagem);
         saudeHoras = (EditText) findViewById(R.id.edtTxtSaudeHoras);
-        saudePorcentagem = (EditText) findViewById(R.id.edtTxtSaudeHorasPorcentagem);
         linguasHoras = (EditText) findViewById(R.id.edtTxtLinguasHoras);
-        linguasPorcentagem = (EditText) findViewById(R.id.edtTxtLinguasHorasPorcentagem);
 
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (verificaPreenchimento()) {
+                    float total = Integer.parseInt(exatasHoras.getText().toString())+
+                            Integer.parseInt(humanidadesHoras.getText().toString()) +
+                            Integer.parseInt(saudeHoras.getText().toString()) +
+                            Integer.parseInt(linguasHoras.getText().toString());
                     Bundle bundle = new Bundle();
+
+                    int exatasP = (int)((Float.parseFloat(exatasHoras.getText().toString())/total)*(100));
+                    int humanidadesP = (int)((Float.parseFloat(humanidadesHoras.getText().toString())/total)*(100));
+                    int saudeP = (int)((Float.parseFloat(saudeHoras.getText().toString())/total)*(100));
+                    int linguasP= (int)((Float.parseFloat(linguasHoras.getText().toString())/total)*(100));
 
                     bundle.putString("nome", nomeAluno.getText().toString());
                     bundle.putString("ano", ano.getText().toString());
                     bundle.putString("semestre", semestre.getText().toString());
                     bundle.putInt("exatasHoras", Integer.parseInt(exatasHoras.getText().toString()));
-                    bundle.putInt("exatasPorcentagem", Integer.parseInt(exatasPorcentagem.getText().toString()));
+                    bundle.putInt("exatasPorcentagem", exatasP);
                     bundle.putInt("humanidadesHoras", Integer.parseInt(humanidadesHoras.getText().toString()));
-                    bundle.putInt("humanidadesPorcentagem", Integer.parseInt(humanidadesPorcentagem.getText().toString()));
+                    bundle.putInt("humanidadesPorcentagem", humanidadesP);
                     bundle.putInt("saudeHoras", Integer.parseInt(saudeHoras.getText().toString()));
-                    bundle.putInt("saudePorcentagem", Integer.parseInt(saudePorcentagem.getText().toString()));
+                    bundle.putInt("saudePorcentagem", saudeP);
                     bundle.putInt("linguasHoras", Integer.parseInt(linguasHoras.getText().toString()));
-                    bundle.putInt("linguasPorcentagem", Integer.parseInt(linguasPorcentagem.getText().toString()));
+                    bundle.putInt("linguasPorcentagem", linguasP);
 
                     Intent intent = new Intent();
 
@@ -75,6 +78,10 @@ public class NovoPlanejamentoActivity extends AppCompatActivity {
         });
     }
 
+    private int calculaPorcentagem(int total, int valor){
+        return total/valor;
+    }
+
     private boolean verificaPreenchimento(){
         if(nomeAluno.getText().toString().equals("")){
             return false;
@@ -84,19 +91,11 @@ public class NovoPlanejamentoActivity extends AppCompatActivity {
             return false;
         } else if(exatasHoras.getText().toString().equals("")){
             return false;
-        } else if(exatasPorcentagem.getText().toString().equals("")){
+        }  else if(humanidadesHoras.getText().toString().equals("")){
             return false;
-        } else if(humanidadesHoras.getText().toString().equals("")){
-            return false;
-        } else if(humanidadesPorcentagem.getText().toString().equals("")){
-            return false;
-        } else if(saudeHoras.getText().toString().equals("")){
-            return false;
-        } else if(saudePorcentagem.getText().toString().equals("")){
+        }  else if(saudeHoras.getText().toString().equals("")){
             return false;
         } else if(linguasHoras.getText().toString().equals("")){
-            return false;
-        } else if(linguasPorcentagem.getText().toString().equals("")){
             return false;
         }
         return true;

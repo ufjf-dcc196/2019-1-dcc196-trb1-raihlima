@@ -27,6 +27,8 @@ public class NovaDisciplinaCursadaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_disciplina_cursada);
 
+        setTitle("Novo Planejamento");
+
         nome = (EditText) findViewById(R.id.edtTxtNomeDisciplina);
         horas = (EditText) findViewById(R.id.edtTxtHorasDiciplina);
         confirmar = (Button) findViewById(R.id.buttonConfirmarNovaDisciplina);
