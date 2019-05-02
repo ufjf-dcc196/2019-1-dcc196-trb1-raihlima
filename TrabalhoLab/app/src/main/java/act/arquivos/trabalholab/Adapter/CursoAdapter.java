@@ -45,9 +45,9 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CursoAdapter.ViewHolder viewHolder, int i) {
         String nome = this.listaCursos.get(i).getNome();
-        String porcentagem  = Integer.toString(this.listaCursos.get(i).getHoras());
-        String computadas = Integer.toString(this.listaCursos.get(i).getHoras());
-        String parciais  = Integer.toString(this.listaCursos.get(i).getHoras());
+        String porcentagem  = Integer.toString(this.listaCursos.get(i).getHorasPorcentagem())+"%";
+        String computadas = Integer.toString(this.listaCursos.get(i).getHoras()) + "H" ;
+        String parciais  = Integer.toString(this.listaCursos.get(i).getHoras())+ "%";
 
         viewHolder.txtNome.setText(nome);
         viewHolder.txtPorcentagem.setText(porcentagem);

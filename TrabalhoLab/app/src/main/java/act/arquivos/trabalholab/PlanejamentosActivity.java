@@ -53,16 +53,44 @@ public class PlanejamentosActivity extends AppCompatActivity {
             @Override
             public void onCursoClick(View v, int position) {
                 if(position==0){
-                    Toast.makeText(PlanejamentosActivity.this, "Teste Linguas", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("nome","Línguas");
+                    bundle.putString("ano", aluno.getAno());
+                    bundle.putString("semestre",aluno.getSemestre());
+                    intent.putExtra("info", bundle);
+
+                    startActivityForResult(intent,2);
 
                 } else if (position==1){
-                    Toast.makeText(PlanejamentosActivity.this, "Teste Exatas", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("nome","Exatas");
+                    bundle.putString("ano", aluno.getAno());
+                    bundle.putString("semestre",aluno.getSemestre());
+                    intent.putExtra("info", bundle);
+
+                    startActivityForResult(intent,3);
 
                 } else if (position==2){
-                    Toast.makeText(PlanejamentosActivity.this, "Teste Saúde", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("nome","Saúde");
+                    bundle.putString("ano", aluno.getAno());
+                    bundle.putString("semestre",aluno.getSemestre());
+                    intent.putExtra("info", bundle);
+
+                    startActivityForResult(intent,4);
 
                 } else if( position==3){
-                    Toast.makeText(PlanejamentosActivity.this, "Teste Humanidades", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("nome","Humanidades");
+                    bundle.putString("ano", aluno.getAno());
+                    bundle.putString("semestre",aluno.getSemestre());
+                    intent.putExtra("info", bundle);
+
+                    startActivityForResult(intent,5);
 
                 }
           }
@@ -99,6 +127,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
         ano.setText("Ano: "+(CharSequence)aluno.getAno());
         semestre.setText("Semestre: "+ (CharSequence)aluno.getSemestre());
 
+        atualizarLista();
     }
 
     private void atualizarLista(){
