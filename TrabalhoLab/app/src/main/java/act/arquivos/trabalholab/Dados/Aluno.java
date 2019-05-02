@@ -11,6 +11,8 @@ public class Aluno {
     private Curso humanidades;
 
     public Aluno(){
+        this.semestre="0";
+        this.ano="0";
         this.exatas = new Curso("Exatas",0,0);
         this.linguas = new Curso("Línguas",0,0);
         this.saude = new Curso("Saúde",0,0);

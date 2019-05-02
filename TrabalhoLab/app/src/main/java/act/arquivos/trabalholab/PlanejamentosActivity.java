@@ -39,7 +39,12 @@ public class PlanejamentosActivity extends AppCompatActivity {
         ano = (TextView) findViewById(R.id.txtAno);
         semestre = (TextView) findViewById(R.id.txtSemestre);
 
-        atualizarLista();
+        RecyclerView rv = findViewById(R.id.rvCursos);
+        cursoAdapter = new CursoAdapter(aluno);
+        rv.setAdapter(cursoAdapter);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+
+       // atualizarLista();
 
         novoPlanejamento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +54,13 @@ public class PlanejamentosActivity extends AppCompatActivity {
             }
         });
 
+
+
         cursoAdapter.setOnCursoClickListener(new CursoAdapter.OnCursoClickListener() {
             @Override
             public void onCursoClick(View v, int position) {
+                Toast.makeText(PlanejamentosActivity.this, "Testando", Toast.LENGTH_SHORT).show();
+
                 if(position==0){
                     Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
                     Bundle bundle = new Bundle();
@@ -95,6 +104,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
                 }
           }
         });
+
     }
 
     @Override
@@ -133,6 +143,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
     private void atualizarLista(){
         RecyclerView rv = findViewById(R.id.rvCursos);
         cursoAdapter = new CursoAdapter(aluno);
+        cursoAdapter.notifyDataSetChanged();
         rv.setAdapter(cursoAdapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
     }
