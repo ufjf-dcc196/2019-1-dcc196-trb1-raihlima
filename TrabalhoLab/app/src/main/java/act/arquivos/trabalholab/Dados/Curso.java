@@ -6,14 +6,16 @@ import java.util.List;
 public class Curso {
     private String nome;
     private int horas;
+    private int horasPorcentagem;
     List <Disciplina> disciplinas = new ArrayList<>();
 
     public Curso() {
     }
 
-    public Curso(String nome, int horas) {
+    public Curso(String nome, int horas, int horasPorcentagem) {
         this.nome = nome;
         this.horas = horas;
+        this.horasPorcentagem = horasPorcentagem;
 
     }
 
@@ -43,5 +45,13 @@ public class Curso {
 
     public void addDisciplinas(Disciplina disciplina){
         this.disciplinas.add(disciplina);
+    }
+
+    public int getHorasPorcentagem() {
+        return horasPorcentagem;
+    }
+
+    public void setHorasPorcentagem(int horasPorcentagem) {
+        this.horasPorcentagem = horasPorcentagem;
     }
 }

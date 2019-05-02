@@ -18,12 +18,14 @@ import act.arquivos.trabalholab.Dados.Aluno;
 
 public class PlanejamentosActivity extends AppCompatActivity {
 
-    Button novoPlanejamento;
+    private Button novoPlanejamento;
     private Aluno aluno;
 
-    TextView nome;
-    TextView ano;
-    TextView semestre;
+    private TextView nome;
+    private TextView ano;
+    private TextView semestre;
+
+    private CursoAdapter cursoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
         ano = (TextView) findViewById(R.id.txtAno);
         semestre = (TextView) findViewById(R.id.txtSemestre);
 
-
-        RecyclerView rv = findViewById(R.id.rvCursos);
-        CursoAdapter cursoAdapter = new CursoAdapter(aluno);
-        rv.setAdapter(cursoAdapter);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        atualizarLista();
 
         novoPlanejamento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +83,29 @@ public class PlanejamentosActivity extends AppCompatActivity {
 
     private void criarNovoAluno(Bundle bundle){
         aluno = new Aluno(bundle.getString("nome"),bundle.getString("ano"),bundle.getString("semestre"));
+        aluno.getExatas().setHoras(bundle.getInt("exatasHoras"));
+        aluno.getExatas().setHorasPorcentagem(bundle.getInt("exatasPorcentagem"));
+        aluno.getHumanidades().setHoras(bundle.getInt("humanidadesHoras"));
+        aluno.getHumanidades().setHorasPorcentagem(bundle.getInt("humanidadesPorcentagem"));
+        aluno.getSaude().setHoras(bundle.getInt("saudeHoras"));
+        aluno.getSaude().setHorasPorcentagem(bundle.getInt("saudePorcentagem"));
+        aluno.getLinguas().setHoras(bundle.getInt("linguasHoras"));
+        aluno.getLinguas().setHorasPorcentagem(bundle.getInt("linguasPorcentagem"));
+        //Toast.makeText(PlanejamentosActivity.this, Integer.toString(aluno.getExatas().getHoras()), Toast.LENGTH_SHORT).show();
     }
 
     private void alterarInfo(){
         nome.setText("Nome: " + (CharSequence)aluno.getNome());
         ano.setText("Ano: "+(CharSequence)aluno.getAno());
         semestre.setText("Semestre: "+ (CharSequence)aluno.getSemestre());
+
+    }
+
+    private void atualizarLista(){
+        RecyclerView rv = findViewById(R.id.rvCursos);
+        cursoAdapter = new CursoAdapter(aluno);
+        rv.setAdapter(cursoAdapter);
+        rv.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }

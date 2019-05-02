@@ -109,15 +109,27 @@
                 android:id="@+id/textView8"
                 android:layout_width="98dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Línguas"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="140dp" />
 
             <EditText
-                android:id="@+id/editText6"
-                android:layout_width="303dp"
+                android:id="@+id/edtTxtLinguasHoras"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="10"
                 android:ems="10"
+                android:hint="Horas"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <EditText
+                android:id="@+id/edtTxtLinguasHorasPorcentagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:ems="10"
+                android:hint="Porcentagem"
                 android:inputType="numberSigned" />
         </TableRow>
 
@@ -129,13 +141,25 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Exatas" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/edtTxtExatasHoras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="10"
                 android:ems="10"
+                android:hint="Horas"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <EditText
+                android:id="@+id/edtTxtExatasHorasPorcentagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:ems="10"
+                android:hint="Porcentagem"
                 android:inputType="numberSigned" />
         </TableRow>
 
@@ -147,13 +171,25 @@
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Saúde" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/edtTxtSaudeHoras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="10"
                 android:ems="10"
+                android:hint="Horas"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <EditText
+                android:id="@+id/edtTxtSaudeHorasPorcentagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:ems="10"
+                android:hint="Porcentagem"
                 android:inputType="numberSigned" />
         </TableRow>
 
@@ -165,14 +201,26 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Humanidades" />
 
             <EditText
-                android:id="@+id/editText9"
+                android:id="@+id/edtTxtHumanidadesHoras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="10"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:hint="Horas"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <EditText
+                android:id="@+id/edtTxtHumanidadesHorasPorcentagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:ems="10"
+                android:hint="Porcentagem"
+                android:inputType="numberSigned" />
         </TableRow>
     </TableLayout>
 
