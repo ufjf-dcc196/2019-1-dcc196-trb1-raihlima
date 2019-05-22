@@ -7,14 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import act.arquivos.trabalholab.Dados.Curso;
 import act.arquivos.trabalholab.Dados.Aluno;
-import act.arquivos.trabalholab.PlanejamentosActivity;
 import act.arquivos.trabalholab.R;
 
 public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> {
@@ -78,7 +76,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNome = (TextView) itemView.findViewById(R.id.txtCursoLayout);
-            txtPorcentagem = (TextView) itemView.findViewById(R.id.txtHorasPorcentagemLayout);
+            txtPorcentagem = (TextView) itemView.findViewById(R.id.LinguasPorcentagemTxtPeriodoLayout);
             txtParciais = (TextView) itemView.findViewById(R.id.txtHorasParciaisLayout);
             txtComputadas = (TextView) itemView.findViewById(R.id.txtHorasComputadasLayout);
 

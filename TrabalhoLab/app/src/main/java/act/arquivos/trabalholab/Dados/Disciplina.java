@@ -2,13 +2,13 @@ package act.arquivos.trabalholab.Dados;
 
 public class Disciplina {
     private String nome;
-    private String horas;
+    private int horas;
     private String curso;
 
     public Disciplina() {
     }
 
-    public Disciplina(String nome, String horas, String curso) {
+    public Disciplina(String nome, int horas, String curso) {
         this.nome = nome;
         this.horas = horas;
         this.curso = curso;
@@ -22,11 +22,11 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public String getHoras() {
+    public int getHoras() {
         return horas;
     }
 
-    public void setHoras(String horas) {
+    public void setHoras(int horas) {
         this.horas = horas;
     }
 

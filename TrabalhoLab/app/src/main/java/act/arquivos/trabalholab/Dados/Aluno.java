@@ -1,42 +1,32 @@
 package act.arquivos.trabalholab.Dados;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
 
     private String nome;
     private String ano;
     private String semestre;
-    private Curso linguas;
-    private Curso exatas;
-    private Curso saude;
-    private Curso humanidades;
+    private List <Periodo> listaPeriodos;
+
 
     public Aluno(){
-        this.semestre="0";
-        this.ano="0";
-        this.exatas = new Curso("Exatas",0,0);
-        this.linguas = new Curso("Línguas",0,0);
-        this.saude = new Curso("Saúde",0,0);
-        this.humanidades = new Curso("Humanidades",0,0);
+        this.listaPeriodos = new ArrayList<>();
     }
 
     public Aluno(String nome, String ano, String semestre) {
         this.nome = nome;
         this.ano = ano;
         this.semestre = semestre;
-        this.exatas = new Curso("Exatas",0,0);
-        this.linguas = new Curso("Línguas",0,0);
-        this.saude = new Curso("Saúde",0,0);
-        this.humanidades = new Curso("Humanidades",0,0);
+        this.listaPeriodos = new ArrayList<>();
     }
 
     public Aluno(String nome, String ano, String semestre, Curso linguas, Curso exatas, Curso saude, Curso humanidades) {
         this.nome = nome;
         this.ano = ano;
         this.semestre = semestre;
-        this.linguas = linguas;
-        this.exatas = exatas;
-        this.saude = saude;
-        this.humanidades = humanidades;
+        this.listaPeriodos = new ArrayList<>();
     }
 
     public String getNome() {
@@ -63,35 +53,15 @@ public class Aluno {
         this.semestre = semestre;
     }
 
-    public Curso getLinguas() {
-        return linguas;
+    public List<Periodo> getListaPeriodos() {
+        return listaPeriodos;
     }
 
-    public void setLinguas(Curso linguas) {
-        this.linguas = linguas;
+    public void setListaPeriodos(List<Periodo> listaPeriodos) {
+        this.listaPeriodos = listaPeriodos;
     }
 
-    public Curso getExatas() {
-        return exatas;
-    }
-
-    public void setExatas(Curso exatas) {
-        this.exatas = exatas;
-    }
-
-    public Curso getSaude() {
-        return saude;
-    }
-
-    public void setSaude(Curso saude) {
-        this.saude = saude;
-    }
-
-    public Curso getHumanidades() {
-        return humanidades;
-    }
-
-    public void setHumanidades(Curso humanidades) {
-        this.humanidades = humanidades;
+    public void addPeriodo(Periodo p){
+        this.listaPeriodos.add(p);
     }
 }
