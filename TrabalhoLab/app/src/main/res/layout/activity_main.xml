@@ -32,24 +32,10 @@
             android:padding="8dp"
             android:text="Aluno:" />
 
-        <TextView
-            android:id="@+id/txtAno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Ano" />
-
-        <TextView
-            android:id="@+id/txtSemestre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Semestre: " />
-
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvCursos"
+            android:id="@+id/rvPeriodo"
             android:layout_width="match_parent"
-            android:layout_height="273dp" />
+            android:layout_height="353dp" />
 
         <Button
             android:id="@+id/botaoNovoPlanejamento"

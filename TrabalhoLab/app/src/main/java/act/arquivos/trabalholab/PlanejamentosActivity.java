@@ -14,11 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import act.arquivos.trabalholab.Adapter.CursoAdapter;
+import act.arquivos.trabalholab.Adapter.PeriodoAdapter;
 import act.arquivos.trabalholab.Dados.Aluno;
+import act.arquivos.trabalholab.Dados.Periodo;
 
 public class PlanejamentosActivity extends AppCompatActivity {
 
     public static final int NOVOPLANEJAMENTO = 1;
+    public static final int DISCIPLINASCURSADAS = 2;
     private Button novoPlanejamento;
     private Aluno aluno;
 
@@ -26,7 +29,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
     private TextView ano;
     private TextView semestre;
 
-    private CursoAdapter cursoAdapter;
+    private PeriodoAdapter periodoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +42,10 @@ public class PlanejamentosActivity extends AppCompatActivity {
         aluno = new Aluno();
         novoPlanejamento = (Button) findViewById(R.id.botaoNovoPlanejamento);
         nome = (TextView) findViewById(R.id.txtAluno);
-        ano = (TextView) findViewById(R.id.txtAno);
-        semestre = (TextView) findViewById(R.id.txtSemestre);
 
-        RecyclerView rv = findViewById(R.id.rvCursos);
-        cursoAdapter = new CursoAdapter(aluno);
-        rv.setAdapter(cursoAdapter);
+        RecyclerView rv = findViewById(R.id.rvPeriodo);
+        periodoAdapter = new PeriodoAdapter(aluno);
+        rv.setAdapter(periodoAdapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
        // atualizarLista();
@@ -59,11 +60,23 @@ public class PlanejamentosActivity extends AppCompatActivity {
 
 
 
-        cursoAdapter.setOnCursoClickListener(new CursoAdapter.OnCursoClickListener() {
+        periodoAdapter.setOnPeriodoClickListener(new PeriodoAdapter.OnPeriodoClickListener() {
             @Override
-            public void onCursoClick(View v, int position) {
-                Toast.makeText(PlanejamentosActivity.this, "Testando", Toast.LENGTH_SHORT).show();
+            public void onPeriodoClick(View v, int position) {
+                Toast.makeText(PlanejamentosActivity.this,Integer.toString(position), Toast.LENGTH_SHORT).show();
+                Periodo p = aluno.getListaPeriodos().get(position);
+                Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
+                Bundle bundle = new Bundle();
+                System.out.println(p.getAno()+p.getSemestre());
+                bundle.putInt("Semestre",p.getSemestre());
+                bundle.putInt("Ano", p.getAno());
+                bundle.putInt("Tempo", p.getTotalHoras());
+                intent.putExtra("info", bundle);
+                startActivityForResult(intent,DISCIPLINASCURSADAS);
 
+                //Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
+                //startActivityForResult(intent,2);
+                /*
                 if(position==0){
                     Intent intent = new Intent(PlanejamentosActivity.this,DisciplinasCursadasActivity.class);
                     Bundle bundle = new Bundle();
@@ -105,6 +118,7 @@ public class PlanejamentosActivity extends AppCompatActivity {
                     startActivityForResult(intent,5);
 
                 }
+                */
           }
         });
 
@@ -123,30 +137,32 @@ public class PlanejamentosActivity extends AppCompatActivity {
     }
 
     private void criarNovoAluno(Bundle bundle){
-        aluno = new Aluno(bundle.getString("nome"),bundle.getString("ano"),bundle.getString("semestre"));
-        aluno.getExatas().setHoras(bundle.getInt("exatasHoras"));
-        aluno.getExatas().setHorasPorcentagem(bundle.getInt("exatasPorcentagem"));
-        aluno.getHumanidades().setHoras(bundle.getInt("humanidadesHoras"));
-        aluno.getHumanidades().setHorasPorcentagem(bundle.getInt("humanidadesPorcentagem"));
-        aluno.getSaude().setHoras(bundle.getInt("saudeHoras"));
-        aluno.getSaude().setHorasPorcentagem(bundle.getInt("saudePorcentagem"));
-        aluno.getLinguas().setHoras(bundle.getInt("linguasHoras"));
-        aluno.getLinguas().setHorasPorcentagem(bundle.getInt("linguasPorcentagem"));
+        Periodo p = new Periodo();
+        p.setAno(Integer.parseInt(bundle.getString("ano")));
+        p.setSemestre(Integer.parseInt(bundle.getString("semestre")));
+        p.getExatas().setHoras(bundle.getInt("exatasHoras"));
+        p.getExatas().setHorasPorcentagem(bundle.getInt("exatasPorcentagem"));
+        p.getSaude().setHoras(bundle.getInt("saudeHoras"));
+        p.getSaude().setHorasPorcentagem(bundle.getInt("saudePorcentagem"));
+        p.getLinguas().setHoras(bundle.getInt("linguasHoras"));
+        p.getLinguas().setHorasPorcentagem(bundle.getInt("linguasPorcentagem"));
+        p.getHumanidades().setHoras(bundle.getInt("humanidadesHoras"));
+        p.getHumanidades().setHorasPorcentagem(bundle.getInt("humanidadesPorcentagem"));
+
+        aluno.addPeriodo(p);
+        aluno.setNome(bundle.getString("nome"));
         //Toast.makeText(PlanejamentosActivity.this, Integer.toString(aluno.getExatas().getHoras()), Toast.LENGTH_SHORT).show();
     }
 
     private void alterarInfo(){
         nome.setText("Nome: " + (CharSequence)aluno.getNome());
-        ano.setText("Ano: "+(CharSequence)aluno.getAno());
-        semestre.setText("Semestre: "+ (CharSequence)aluno.getSemestre());
-
         atualizarLista();
     }
 
     private void atualizarLista(){
-        RecyclerView rv = findViewById(R.id.rvCursos);
-        cursoAdapter.alteraDados(aluno);
-        cursoAdapter.notifyDataSetChanged();
+        RecyclerView rv = findViewById(R.id.rvPeriodo);
+        periodoAdapter.alteraDados(aluno);
+        periodoAdapter.notifyDataSetChanged();
 
 
     }

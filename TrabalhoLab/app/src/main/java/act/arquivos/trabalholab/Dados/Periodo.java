@@ -74,7 +74,7 @@ public class Periodo {
         this.humanidades = humanidades;
     }
 
-    public int totalHoras(){
+    public int getTotalHoras(){
         return this.saude.getHoras() + this.exatas.getHoras() + this.humanidades.getHoras() + this.linguas.getHoras();
     }
 }

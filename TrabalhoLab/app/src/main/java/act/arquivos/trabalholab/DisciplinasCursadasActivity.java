@@ -10,18 +10,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import act.arquivos.trabalholab.Adapter.CursoAdapter;
 import act.arquivos.trabalholab.Adapter.DisciplinaAdapter;
 import act.arquivos.trabalholab.Dados.Curso;
 import act.arquivos.trabalholab.Dados.Disciplina;
+import act.arquivos.trabalholab.Dados.Periodo;
 
 public class DisciplinasCursadasActivity extends AppCompatActivity {
 
-    private TextView nome;
+    private TextView tempo;
     private TextView ano;
     private TextView semestre;
     private Button novaDisciplina;
-    private Curso curso = new Curso();
+    private Periodo periodo = new Periodo();
 
     private DisciplinaAdapter disciplinaAdapter;
 
@@ -33,9 +33,9 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
 
         setTitle("Disciplinas Cursadas");
 
-        nome = (TextView) findViewById(R.id.txtNomeCusro);
-        ano = (TextView) findViewById(R.id.txtAnoCurso);
-        semestre = (TextView) findViewById(R.id.txtSemestreCurso);
+        ano = (TextView) findViewById(R.id.anoTxtDisciplinasCursadas);
+        semestre = (TextView) findViewById(R.id.semestreTxtDisciplinasCursadas);
+        tempo = (TextView) findViewById(R.id.tempoTxtDisciplinasCursadas);
 
         novaDisciplina = (Button) findViewById(R.id.botaoNovaDisciplinaDC);
 
@@ -58,8 +58,8 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == Activity.RESULT_OK){
-            if(requestCode==10){
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 10) {
                 Bundle bundle = data.getBundleExtra("info");
                 atualizaLista(bundle);
             }
@@ -67,13 +67,13 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
     }
 
     private void atualizaInfo(Bundle bundle){
-        nome.setText("Curso: " + (CharSequence)bundle.getString("nome"));
-        ano.setText("Ano: " + (CharSequence)bundle.getString("ano"));
-        semestre.setText("Semestre: " + (CharSequence)bundle.getString("semestre"));
+        tempo.setText("Tempo: " + bundle.getInt("Tempo")+ "h");
+        ano.setText("Ano: " + bundle.getInt("Ano"));
+        semestre.setText("Semestre: " + bundle.getInt("Semestre"));
 
-        curso.setNome(bundle.getString("nome"));
-        curso.setHoras(bundle.getInt("horas"));
-        curso.setHorasPorcentagem(bundle.getInt("horasPorcentagem"));
+        periodo.setAno(bundle.getInt("Ano"));
+        periodo.setSemestre(bundle.getInt("Semestre"));
+
 
         //curso.addDisciplinas(new Disciplina("Teste","10","Exatas"));
 
@@ -82,16 +82,25 @@ public class DisciplinasCursadasActivity extends AppCompatActivity {
     private void atualizaLista(Bundle bundle){
         Disciplina disciplina = new Disciplina();
         disciplina.setNome(bundle.getString("nome"));
-        disciplina.setHoras(bundle.getString("horas"));
+        disciplina.setHoras(Integer.parseInt(bundle.getString("horas")));
         disciplina.setCurso(bundle.getString("curso"));
 
-        curso.addDisciplinas(disciplina);
+        if(bundle.getString("curso").equals("Exatas")){
+            periodo.getExatas().addDisciplinas(disciplina);
+        } else if(bundle.getString("curso").equals("Línguas")){
+            periodo.getLinguas().addDisciplinas(disciplina);
+        } else if(bundle.getString("curso").equals("Humanidades")){
+            periodo.getHumanidades().addDisciplinas(disciplina);
+        } else if(bundle.getString("curso").equals("Saúde")){
+            periodo.getSaude().addDisciplinas(disciplina);
+        }
+    //periodo.addDisciplinas(disciplina);
         atualizaRecyclerView();
     }
 
     private void atualizaRecyclerView(){
         RecyclerView rv = findViewById(R.id.rvDisciplinas);
-        disciplinaAdapter = new DisciplinaAdapter(curso);
+        disciplinaAdapter = new DisciplinaAdapter(periodo);
         disciplinaAdapter.notifyDataSetChanged();
         rv.setAdapter(disciplinaAdapter);
         rv.setLayoutManager(new LinearLayoutManager(this));

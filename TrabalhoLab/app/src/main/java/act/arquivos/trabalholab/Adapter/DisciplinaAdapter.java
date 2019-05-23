@@ -15,6 +15,7 @@ import java.util.List;
 import act.arquivos.trabalholab.Dados.Curso;
 import act.arquivos.trabalholab.Dados.Aluno;
 import act.arquivos.trabalholab.Dados.Disciplina;
+import act.arquivos.trabalholab.Dados.Periodo;
 import act.arquivos.trabalholab.PlanejamentosActivity;
 import act.arquivos.trabalholab.R;
 
@@ -23,9 +24,18 @@ public class DisciplinaAdapter extends RecyclerView.Adapter<DisciplinaAdapter.Vi
     private List <Disciplina> listaDisciplinas = new ArrayList<>();
     private OnDisciplinaClickListener listener;
 
-    public DisciplinaAdapter(Curso curso) {
-        for(int i=0;i<curso.getDisciplinas().size();i++){
-            this.listaDisciplinas.add(curso.getDisciplinas().get(i));
+    public DisciplinaAdapter(Periodo periodo) {
+        for(int i=0;i<periodo.getHumanidades().getDisciplinas().size();i++){
+            this.listaDisciplinas.add(periodo.getHumanidades().getDisciplinas().get(i));
+        }
+        for(int i=0;i<periodo.getExatas().getDisciplinas().size();i++){
+            this.listaDisciplinas.add(periodo.getExatas().getDisciplinas().get(i));
+        }
+        for(int i=0;i<periodo.getLinguas().getDisciplinas().size();i++){
+            this.listaDisciplinas.add(periodo.getLinguas().getDisciplinas().get(i));
+        }
+        for(int i=0;i<periodo.getSaude().getDisciplinas().size();i++){
+            this.listaDisciplinas.add(periodo.getSaude().getDisciplinas().get(i));
         }
 
     }

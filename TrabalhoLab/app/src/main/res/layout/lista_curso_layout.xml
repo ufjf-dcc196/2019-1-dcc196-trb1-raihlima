@@ -15,7 +15,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/LinguasPorcentagemTxtPeriodoLayout"
+        android:id="@+id/linguasPorcentagemTxtPeriodoLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
@@ -24,7 +24,7 @@
         android:textAlignment="textStart" />
 
     <TextView
-        android:id="@+id/LinguasHorasComputadasTxtPeriodoLayout"
+        android:id="@+id/linguasHorasComputadasTxtPeriodoLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
@@ -32,7 +32,7 @@
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/LinguasHorasParciaisTxtPeriodoLayout"
+        android:id="@+id/linguasHorasParciaisTxtPeriodoLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"

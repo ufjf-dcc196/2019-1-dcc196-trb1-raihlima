@@ -15,8 +15,10 @@ import act.arquivos.trabalholab.Dados.Curso;
 import act.arquivos.trabalholab.Dados.Aluno;
 import act.arquivos.trabalholab.R;
 
-public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> {
 
+public class CursoAdapter{
+//public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> {
+/*
     private List <Curso> listaCursos = new ArrayList<>();
     private OnCursoClickListener listener;
 
@@ -76,7 +78,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNome = (TextView) itemView.findViewById(R.id.txtCursoLayout);
-            txtPorcentagem = (TextView) itemView.findViewById(R.id.LinguasPorcentagemTxtPeriodoLayout);
+            txtPorcentagem = (TextView) itemView.findViewById(R.id.linguasPorcentagemTxtPeriodoLayout);
             txtParciais = (TextView) itemView.findViewById(R.id.txtHorasParciaisLayout);
             txtComputadas = (TextView) itemView.findViewById(R.id.txtHorasComputadasLayout);
 
@@ -103,5 +105,5 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
     public interface OnCursoClickListener {
         public void onCursoClick(View v, int position);
     }
-
+*/
 }

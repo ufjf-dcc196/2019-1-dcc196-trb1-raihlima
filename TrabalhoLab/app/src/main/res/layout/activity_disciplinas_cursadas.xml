@@ -22,29 +22,32 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txtNomeCusro"
+                android:id="@+id/anoTxtDisciplinasCursadas"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/semestreTxtDisciplinasCursadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/tempoTxtDisciplinasCursadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:gravity="right"
                 android:text="TextView" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txtAnoCurso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/txtSemestreCurso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:text="TextView" />
 
         </TableRow>
 
